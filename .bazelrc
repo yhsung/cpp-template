@@ -23,3 +23,12 @@ build:ubsan --copt -fno-omit-frame-pointer
 build:ubsan --linkopt -fsanitize=undefined
 build:ubsan --sandbox_debug 
 build:ubsan --spawn_strategy=standalone
+
+# Memory sanitizer config
+build:msan --strip=never
+build:msan --copt -fsanitize=memory
+build:msan --copt -O0
+build:msan --copt -g
+build:msan --linkopt -fsanitize=memory
+build:msan --sandbox_debug 
+build:msan --spawn_strategy=standalone

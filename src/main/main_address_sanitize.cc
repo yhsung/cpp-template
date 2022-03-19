@@ -104,6 +104,15 @@ int main(int argc, char **argv) {
       *ptr = 5;
       break;
     }
+
+    case 9: {
+      // stack-use-after-scope
+      volatile char *ptr = nullptr;
+
+      *ptr = 5;
+      break;
+    }
+
     default:
       std::cout << "Error: Invalid choice value: " << choice << std::endl;
   }

@@ -1,9 +1,23 @@
-// Demo of Address Sanitizer.
-// By Ari Saif
-// Run with this command:
-// g++ -O1 -g -fsanitize=address -fno-omit-frame-pointer
-// src/main/main_address_sanitize_gcc.cc a.out <choice> where choice is one of
-// the values from 0 to 6. See the main function below.
+/*
+* Demo of Address Sanitizer.
+* By Ari Saif
+* Run with this command:
+
+g++ \
+-fsanitize=address \
+-DADDRESS_SANITIZER \
+-O0 \
+-g \
+-fno-omit-frame-pointer \
+-fsanitize=address \
+src/main/main_address_sanitize_gcc.cc
+
+* And then:
+a.out <choice>
+
+* where choice is one of
+* the values from 0 to 8. See the main function below.
+*/
 
 #include <iostream>
 #include <string>
@@ -76,7 +90,7 @@ int main(int argc, char **argv) {
       // Set this env variable before running:
       // export ASAN_OPTIONS=detect_stack_use_after_return=1
       FunctionThatEscapesLocalObject();
-      return ptr[0];
+      return global_ptr[0];
     }
 
     case 6: {
@@ -102,6 +116,15 @@ int main(int argc, char **argv) {
       *ptr = 5;
       break;
     }
+
+    case 9: {
+      // stack-use-after-scope
+      volatile char *ptr = nullptr;
+
+      *ptr = 5;
+      break;
+    }
+
     default:
       std::cout << "Error: Invalid choice value: " << choice << std::endl;
   }
