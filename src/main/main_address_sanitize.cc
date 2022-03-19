@@ -57,35 +57,50 @@ int main(int argc, char **argv) {
   switch (choice) {
     case 0: {
       // Usage after delete.
-      int *p = new int;
+      char *p = new char;
       delete p;
       std::cout << "*p: " << *p << std::endl;
       break;
     }
 
     case 1: {
-      // SEGV on unknown address
-      std::vector<int> v;
-      std::cout << "v[100]: " << v[100] << std::endl;
+      // Double-free.
+      char *p = new char;
+      delete p;
+      delete p;
       break;
     }
 
     case 2: {
+      // SEGV on unknown address
+      std::vector<char> v;
+      std::cout << "v[100]: " << v[100] << std::endl;
+      break;
+    }
+
+    case 3: {
       // Stack buffer overflow.
       char array[16];
       array[20] = 1;  // BOOM!
       break;
     }
 
-    case 3: {
+    case 4: {
       // Heap buffer overflow.
       char *array = new char[16];
-
       array[16] = 1;  // BOOM!
       break;
     }
 
-    case 4: {
+    case 5: {
+      // Heap buffer overflow (example 2).
+      char *ptr = new char;
+      *ptr = 'a';
+      std::cout << *(ptr + 1) << std::endl;
+      break;
+    }
+
+    case 6: {
       // Leak detection (Doesn't work on Mac?)
       // Set this env variable before running:
       // export ASAN_OPTIONS=detect_leaks=1
@@ -94,13 +109,13 @@ int main(int argc, char **argv) {
         bazel run --config=asan //src/main:main_address_sanitize \
         --run_under='export ASAN_OPTIONS=detect_leaks=1 &&' -- 4
       */
-      int *p = new int;
+      char *p = new char;
       *p = 10;
       std::cout << "*p: " << *p << std::endl;
       break;
     }
 
-    case 5: {
+    case 7: {
       // stack-use-after-return
       // Set this env variable before running:
       // export ASAN_OPTIONS=detect_stack_use_after_return=1
@@ -108,20 +123,20 @@ int main(int argc, char **argv) {
       return global_ptr[0];
     }
 
-    case 6: {
+    case 8: {
       // global-buffer-overflow
       global_array[11] = 1;  // Boom!
       break;
     }
 
-    case 7: {
+    case 9: {
       // global-buffer-overflow
       static char array[10];
       array[11] = 1;  // Boom!
       break;
     }
 
-    case 8: {
+    case 10: {
       // stack-use-after-scope
       volatile char *ptr = nullptr;
       {
@@ -132,7 +147,7 @@ int main(int argc, char **argv) {
       break;
     }
 
-    case 9: {
+    case 12: {
       // stack-use-after-scope
       volatile char *ptr = nullptr;
 
