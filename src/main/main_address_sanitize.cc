@@ -1,18 +1,41 @@
 // Demo of Address Sanitizer.
 // By Ari Saif
-// Run with this command:
-// bazel run --config=asan //src/main:main_address_sanitize -- --choice=[choice]
-// where choice is one of the values from 0 to 6. See the main function below.
+//-----------------------------------------------------------------------------
+// How to build and run?
+//-----------------------------------------------------------------------------
+// Using bazel:
+/*
+bazel run --config=asan //src/main:main_address_sanitize -- [choice]
+where choice is one of the choices below. See the main function below.
 
+Example:
+
+bazel run --config=asan //src/main:main_address_sanitize -- 1
+*/
+//-----------------------------------------------------------------------------
+// Using GCC:
+/*
+* Run with this command:
+
+g++ \
+-fsanitize=address \
+-DADDRESS_SANITIZER \
+-O0 \
+-g \
+-fno-omit-frame-pointer \
+-fsanitize=address \
+src/main/main_address_sanitize_gcc.cc
+
+* And then:
+a.out <choice>
+
+* where choice is one of of the values below See the main function below.
+*/
+//-----------------------------------------------------------------------------
 #include <iostream>
 #include <string>
 #include <vector>
 
-#include "absl/flags/flag.h"
-#include "absl/flags/parse.h"
-#include "absl/flags/usage.h"
-
-ABSL_FLAG(uint32_t, choice, 0, "choice");
 //-----------------------------------------------------------------------------
 volatile char *global_ptr;
 
@@ -25,9 +48,13 @@ char global_array[10];
 
 //-----------------------------------------------------------------------------
 int main(int argc, char **argv) {
-  absl::ParseCommandLine(argc, argv);
+  if (argc != 2) {
+    std::cout << "Usage: main_address_sanitize <choice>" << std::endl;
+    return -1;
+  }
 
-  int choice = absl::GetFlag(FLAGS_choice);
+  int choice = std::stoi(argv[1]);
+  std::cout << "choice: " << choice << std::endl;
 
   switch (choice) {
     case 0: {
@@ -67,7 +94,7 @@ int main(int argc, char **argv) {
       // Or with bazel:
       /*
         bazel run --config=asan //src/main:main_address_sanitize \
-        --run_under='export ASAN_OPTIONS=detect_leaks=1 &&' -- --choice=4
+        --run_under='export ASAN_OPTIONS=detect_leaks=1 &&' -- 4
       */
       int *p = new int;
       *p = 10;

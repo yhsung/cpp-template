@@ -43,10 +43,6 @@ cc_binary(
             "ASAN_OPTIONS": "detect_stack_use_after_return=1",
         },
     deps = [
-        "@com_google_absl//absl/flags:flag",
-        "@com_google_absl//absl/flags:parse",
-        "@com_google_absl//absl/flags:usage",
-        "@glog",
     ],
 )
 
@@ -61,11 +57,9 @@ cc_binary(
     ],
 )
 
-
 cc_binary(
     name = "fib_main",
     srcs = ["fib_main.cc"],
     deps = [
-        
     ],
 )
