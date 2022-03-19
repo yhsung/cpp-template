@@ -18,8 +18,6 @@ bazel run --config=asan //src/main:main_address_sanitize -- 1
 * Run with this command:
 
 g++ \
--fsanitize=address \
--DADDRESS_SANITIZER \
 -O0 \
 -g \
 -fno-omit-frame-pointer \
