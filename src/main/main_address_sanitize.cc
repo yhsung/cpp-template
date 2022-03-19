@@ -24,7 +24,7 @@ g++ \
 -g \
 -fno-omit-frame-pointer \
 -fsanitize=address \
-src/main/main_address_sanitize_gcc.cc
+src/main/main_address_sanitize.cc
 
 * And then:
 a.out <choice>
