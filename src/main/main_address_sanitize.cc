@@ -65,8 +65,10 @@ int main(int argc, char **argv) {
       // Set this env variable before running:
       // export ASAN_OPTIONS=detect_leaks=1
       // Or with bazel:
-      // bazel run --config=asan //src/main:main_address_sanitize \
-      // --run_under='export ASAN_OPTIONS=detect_leaks=1 &&' -- --choice=4
+      /*
+        bazel run --config=asan //src/main:main_address_sanitize \
+        --run_under='export ASAN_OPTIONS=detect_leaks=1 &&' -- --choice=4
+      */
       int *p = new int;
       *p = 10;
       std::cout << "*p: " << *p << std::endl;
