@@ -27,7 +27,7 @@ g++ \
 src/main/main_address_sanitize.cc
 
 * And then:
-a.out <choice>
+./a.out <choice>
 
 * where choice is one of of the values below See the main function below.
 */
