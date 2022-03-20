@@ -95,7 +95,11 @@
     "semaphore": "cpp",
     "stop_token": "cpp",
     "cerrno": "cpp",
-    "csignal": "cpp"
+    "csignal": "cpp",
+    "cfenv": "cpp",
+    "scoped_allocator": "cpp",
+    "typeindex": "cpp",
+    "valarray": "cpp"
   },
   "lldb.displayFormat": "auto",
   "lldb.dereferencePointers": true,

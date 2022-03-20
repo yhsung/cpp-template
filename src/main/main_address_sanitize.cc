@@ -64,16 +64,16 @@ int main(int argc, char **argv) {
 
     case 1: {
       // SEGV on unknown address
-      std::vector<char> v;
-      std::cout << "v[100]: " << v[100] << std::endl;
+      char *ptr = (char *)1;
+      std::cout << "ptr: " << (int *)ptr << std::endl;
+      *ptr = 5;
       break;
     }
 
     case 2: {
-      // BUS on unknown address
-      char *ptr = (char* ) 1;
-      std::cout << "ptr: " << (int *)ptr << std::endl;
-      *ptr = 5;
+      // SEGV on unknown address
+      std::vector<char> v;
+      std::cout << "v[100]: " << v[100] << std::endl;
       break;
     }
 
