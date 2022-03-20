@@ -71,7 +71,7 @@ int main(int argc, char **argv) {
 
     case 2: {
       // BUS on unknown address
-      char *ptr;
+      char *ptr = (char* ) 1;
       std::cout << "ptr: " << (int *)ptr << std::endl;
       *ptr = 5;
       break;
