@@ -47,3 +47,11 @@ cc_test(
         "@com_google_googletest//:gtest_main",
     ],
 )
+
+cc_test(
+    name = "inheritance",
+    srcs = ["inheritance.cc"],
+    deps = [
+        "@com_google_googletest//:gtest_main",
+    ],
+)

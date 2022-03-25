@@ -129,4 +129,5 @@
   "gtest-adapter.debugConfig": [
     "CodeLLDB"
   ],
+  "editor.mouseWheelZoom": true,
 }
