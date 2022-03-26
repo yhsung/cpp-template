@@ -99,7 +99,7 @@ int main(int argc, char **argv) {
     }
 
     case 6: {
-      // Usage after delete.
+      // Heap use after free.
       char *p = new char;
       delete p;
       std::cout << *p << std::endl;
