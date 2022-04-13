@@ -23,7 +23,6 @@ class MockBankServer {
 // Template ATM Machine
 template <class BankServer>
 class AtmMachine {
-  
   // The member variable is NOT a pointer!
   BankServer bankServer_;
 
@@ -54,9 +53,11 @@ TEST(AtmMachine, CanWithdrawSimple) {
 
   AtmMachine<MockBankServer> atm_machine;
 
-  // Use the getter to get a reference to the mocked member varibale:
+  // Use the getter to get a pointer to the mocked member varibale:
   MockBankServer* mock_bankserver = atm_machine.GetBankServer();
 
+  // Using the pointer to the mocked member variable, we specify what should
+  // happen:
   ON_CALL(*mock_bankserver, GetBalance(account_number))
       .WillByDefault(Return(2000));
 
@@ -74,9 +75,11 @@ TEST(AtmMachine, CantWithdrawWhenNotEnoughMoney) {
 
   AtmMachine<MockBankServer> atm_machine;
 
-  // Use the getter to get a reference to the mocked member varibale:
+  // Use the getter to get a pointer to the mocked member varibale:
   MockBankServer* mock_bankserver = atm_machine.GetBankServer();
 
+  // Using the pointer to the mocked member variable, we specify what should
+  // happen:
   ON_CALL(*mock_bankserver, GetBalance(account_number))
       .WillByDefault(Return(2));
 
