@@ -1,5 +1,8 @@
 
-
+// GMock Demo
+// Mocking a non-virtual class.
+// By Ari Saif
+//-----------------------------------------------------------------------------
 #include <exception>
 #include <iostream>
 #include <vector>
