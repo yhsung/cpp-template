@@ -37,15 +37,6 @@ cc_test(
 )
 
 cc_test(
-    name = "mock_non_virtual",
-    srcs = ["mock_non_virtual.cc"],
-    deps = [
-        "//tests/gmock_demo/bankserver:BankServerLib",
-        "@com_google_googletest//:gtest_main",
-    ],
-)
-
-cc_test(
     name = "expect_call_side_effects",
     srcs = ["expect_call_side_effects.cc"],
     deps = [
@@ -107,6 +98,16 @@ cc_test(
         "@com_google_googletest//:gtest_main",
     ],
 )
+
+cc_test(
+    name = "mock_non_virtual_classes_non_pointer",
+    srcs = ["mock_non_virtual_classes_non_pointer.cc"],
+    deps = [
+        "//tests/gmock_demo/bankserver:BankServerLib",
+        "@com_google_googletest//:gtest_main",
+    ],
+)
+
 
 cc_test(
     name = "matchers",
