@@ -32,14 +32,6 @@ void MyFunction() {
   LOG_EVERY_N(INFO, 10) << "Got the " << google::COUNTER << "th cookie";
   LOG_EVERY_N(INFO, 10) << "Got the " << google::COUNTER << "th cookie";
   LOG_EVERY_N(INFO, 10) << "Got the " << google::COUNTER << "th cookie";
-  LOG_EVERY_N(INFO, 10) << "Got the " << google::COUNTER << "th cookie";
-  LOG_EVERY_N(INFO, 10) << "Got the " << google::COUNTER << "th cookie";
-  LOG_EVERY_N(INFO, 10) << "Got the " << google::COUNTER << "th cookie";
-  LOG_EVERY_N(INFO, 10) << "Got the " << google::COUNTER << "th cookie";
-  LOG_EVERY_N(INFO, 10) << "Got the " << google::COUNTER << "th cookie";
-  LOG_EVERY_N(INFO, 10) << "Got the " << google::COUNTER << "th cookie";
-  LOG_EVERY_N(INFO, 10) << "Got the " << google::COUNTER << "th cookie";
-  LOG_EVERY_N(INFO, 10) << "Got the " << google::COUNTER << "th cookie";
 }
 
 /**
