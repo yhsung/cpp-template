@@ -25,7 +25,21 @@ void MyFunction() {
   LOG(INFO) << "Hello, world again!";
   LOG(ERROR) << "This is an error message";
   LOG_IF(INFO, g_cond == true) << "g_cond is true!";
-  CHECK(5 == 4) << "Check failed!";
+  //CHECK(5 == 4) << "Check failed!";
+  LOG_EVERY_N(INFO, 10) << "Got the " << google::COUNTER << "th cookie";
+  LOG_EVERY_N(INFO, 10) << "Got the " << google::COUNTER << "th cookie";
+  LOG_EVERY_N(INFO, 10) << "Got the " << google::COUNTER << "th cookie";
+  LOG_EVERY_N(INFO, 10) << "Got the " << google::COUNTER << "th cookie";
+  LOG_EVERY_N(INFO, 10) << "Got the " << google::COUNTER << "th cookie";
+  LOG_EVERY_N(INFO, 10) << "Got the " << google::COUNTER << "th cookie";
+  LOG_EVERY_N(INFO, 10) << "Got the " << google::COUNTER << "th cookie";
+  LOG_EVERY_N(INFO, 10) << "Got the " << google::COUNTER << "th cookie";
+  LOG_EVERY_N(INFO, 10) << "Got the " << google::COUNTER << "th cookie";
+  LOG_EVERY_N(INFO, 10) << "Got the " << google::COUNTER << "th cookie";
+  LOG_EVERY_N(INFO, 10) << "Got the " << google::COUNTER << "th cookie";
+  LOG_EVERY_N(INFO, 10) << "Got the " << google::COUNTER << "th cookie";
+  LOG_EVERY_N(INFO, 10) << "Got the " << google::COUNTER << "th cookie";
+  LOG_EVERY_N(INFO, 10) << "Got the " << google::COUNTER << "th cookie";
 }
 
 /**
