@@ -32,3 +32,10 @@ build:msan --copt -g
 build:msan --linkopt -fsanitize=memory
 build:msan --sandbox_debug 
 build:msan --spawn_strategy=standalone
+
+# Standard setup of llvm-cov coverage.
+coverage --repo_env=CC=clang
+coverage --repo_env=BAZEL_USE_LLVM_NATIVE_COVERAGE=1
+coverage --repo_env=GCOV=/Library/Developer/CommandLineTools/usr/bin/llvm-profdata
+coverage --experimental_use_llvm_covmap
+coverage --instrument_test_targets

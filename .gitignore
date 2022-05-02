@@ -6,3 +6,7 @@
 /bazel-template
 /bazel-*
 *.md2
+/external
+/compile_commands.json
+/.cache/
+.DS_Store

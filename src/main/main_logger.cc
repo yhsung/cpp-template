@@ -25,10 +25,7 @@ void MyFunction() {
   LOG(INFO) << "Hello, world again!";
   LOG(ERROR) << "This is an error message";
   LOG_IF(INFO, g_cond == true) << "g_cond is true!";
-  //CHECK(5 == 4) << "Check failed!";
-  LOG_EVERY_N(INFO, 10) << "Got the " << google::COUNTER << "th cookie";
-  LOG_EVERY_N(INFO, 10) << "Got the " << google::COUNTER << "th cookie";
-  LOG_EVERY_N(INFO, 10) << "Got the " << google::COUNTER << "th cookie";
+  //ßCHECK(5 == 4) << "Check failed!";ß
   LOG_EVERY_N(INFO, 10) << "Got the " << google::COUNTER << "th cookie";
   LOG_EVERY_N(INFO, 10) << "Got the " << google::COUNTER << "th cookie";
   LOG_EVERY_N(INFO, 10) << "Got the " << google::COUNTER << "th cookie";
@@ -40,7 +37,7 @@ void MyFunction() {
 int main(int argc, char* argv[]) {
   google::InitGoogleLogging(argv[0]);
 
-  // Log both to log file and stderr
+  // Log both to log file and stderrß
   FLAGS_alsologtostderr = true;
   MyFunction();
   return 0;

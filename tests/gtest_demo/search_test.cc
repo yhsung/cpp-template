@@ -4,7 +4,6 @@
 #include <numeric>
 #include <thread>
 #include <vector>
-
 #include "gtest/gtest.h"
 
 template <class T>

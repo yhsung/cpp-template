@@ -21,6 +21,9 @@ cc_test(
 cc_test(
     name = "search_test",
     srcs = ["search_test.cc"],
+    #linkopts = [
+    #    "--coverage"
+    #],
     deps = [
         "//src/lib/search:SearchLib",
         "@com_google_googletest//:gtest_main",
